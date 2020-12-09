@@ -10,6 +10,10 @@ body {
 .m-padded-tiny {
     padding: 0.3em !important;
 }
+.m-padded {
+    padding: 1em !important;
+}
+
 .m-padded-tb-mini {
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
@@ -128,6 +132,16 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.m-fixed {
+    position: fixed !important;
+    z-index: 1 !important;
+}
+
+.m-right-bottom {
+    bottom: 0 !important;
+    right: 0 !important;
 }
 
 .m-mobile-show {
