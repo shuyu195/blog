@@ -161,5 +161,9 @@ body {
     .m-mobile-wide {
         width: 100% !important;
     }
+    .m-padded-tb-small {
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+    }
 
 }
