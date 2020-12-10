@@ -49,7 +49,7 @@
     </div>
 
     <!-- 中间部分 -->
-    <div class="m-container-small m-padded-tb-big">
+    <div id="waypoint" class="m-container-small m-padded-tb-big">
         <div class="ui container">
             <form action="#" method="post" class="ui form">
 
@@ -174,6 +174,13 @@
         </div>
     </div>
 
+    <!--toTop -->
+    <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none;">
+        <div class="ui vertical teal icon buttons">
+            <div id="toTop-btn" href="#" class="ui icon button"><i class=" chevron up icon"></i></div>
+        </div>
+    </div>
+
     <br>
     <br>
     <br>
@@ -184,7 +191,8 @@
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="../../static/img/wechat.png" alt="" class="ui rounded image" style="width: 110px;">
+                            <img src="../../static/img/wechat.png" alt="" class="ui rounded image"
+                                style="width: 110px;">
                         </div>
                     </div>
                 </div>
@@ -220,7 +228,11 @@
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="../../static/lib/waypoints/jquery.waypoints.min.js"
+        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
     <script src="../../static/lib/editormd/editormd.min.js"></script>
+    
     <script>
 
 
@@ -262,6 +274,22 @@
                     }]
                 }
             },
+        });
+        //平滑滚动
+        $('#toTop-btn').click(function () {
+            $(window).scrollTo(0, 500);
+        });
+
+        //滚动侦测
+        let waypoint = new Waypoint({
+            element: document.getElementById('waypoint'),
+            handler: function (direction) {
+                if (direction == 'down') {
+                    $('#toolbar').show(100);
+                } else {
+                    $('#toolbar').hide(500);
+                }
+            }
         });
     </script>
 </body>
