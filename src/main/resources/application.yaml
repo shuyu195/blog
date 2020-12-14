@@ -13,3 +13,8 @@ spring:
 server:
   error:
     path: /error
+
+size:
+  type: 6
+  tag: 10
+  blog: 8
