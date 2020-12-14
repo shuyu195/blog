@@ -65,9 +65,9 @@ public class TagController {
     @PostMapping("/tags/{id}")
     public String editPost(@Valid Tag tag, BindingResult result,
                            @PathVariable Long id, RedirectAttributes attributes) {
-        System.out.println("===========");
-        System.out.println("request param --> " + tag);
-        System.out.println("===========");
+//        System.out.println("===========");
+//        System.out.println("request param --> " + tag);
+//        System.out.println("===========");
         Tag tag1 = tagService.getTagByName(tag.getName());
         if (tag1 != null) {
             result.rejectValue("name", "nameError", "不能重复添加分类");

@@ -5,6 +5,7 @@ import com.blog.po.Blog;
 import com.blog.po.Type;
 import com.blog.repository.BlogRepository;
 import com.blog.service.BlogService;
+import com.blog.util.MyBeanUtils;
 import com.blog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +91,8 @@ public class BlogServiceImpl implements BlogService {
         if (b == null) {
             throw new NotFoundException("该博客不存在");
         }
-        BeanUtils.copyProperties(b, blog);
+        BeanUtils.copyProperties(blog, b, MyBeanUtils.getNullPropertyNames(blog));
+        b.setUpdateTime(new Date());
         return blogRepository.save(b);
     }
 
