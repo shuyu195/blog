@@ -14,7 +14,12 @@ server:
   error:
     path: /error
 
+#配置查询页数
 size:
   type: 6
   tag: 10
   blog: 8
+
+#配置评论默认头像
+comment:
+  avatar : /img/avatar.png
