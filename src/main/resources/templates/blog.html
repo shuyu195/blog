@@ -512,6 +512,28 @@
                                         <a class="reply" data-commentid="1" data-commentnickname="马特" th:attr="data-commentid=${comment.id}, data-commentnickname=${comment.nickname}" onclick="reply(this)">回复</a>
                                     </div>
                                 </div>
+
+                                <!--二级回复-->
+                                <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
+                                    <div class="comment" th:each="reply : ${comment.replyComments}">
+                                        <a class="avatar">
+                                            <img src="https://picsum.photos/id/10/800/450" th:src="@{${reply.avatar}}">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author" >
+                                                <span th:text="${reply.nickname}">马特</span>&nbsp;
+                                                <span th:text="|@ ${reply.parentComment.nickname}|" class="m-teal">@ 汤姆</span>
+                                            </a>
+                                            <div class="metadata">
+                                                <span class="date" th:text="${#dates.format(reply.createTime, 'yyyy-MM-dd HH:mm')}">今天下午 5:42</span>
+                                            </div>
+                                            <div class="text" th:text="${reply.content}">太赞了！ </div>
+                                            <div class="actions">
+                                                <a class="reply" data-commentid="1" data-commentnickname="马特" th:attr="data-commentid=${reply.id}, data-commentnickname=${reply.nickname}" onclick="reply(this)">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!--/*-->
                             <div class="comment">
@@ -761,6 +783,10 @@
                     }]
                 }
             }
+        });
+
+        $(function () {
+            $('#comment-container').load(/*[[@{/comments/{id}(id=${blog.id})}]]*/'');
         });
 
         $('#comment-post-btn').click(function () {
