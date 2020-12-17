@@ -10,6 +10,8 @@ import java.util.Map;
 
 public interface BlogService {
 
+    Page<Blog> listBlogCommentabled(Pageable pageable);
+
     Blog getBolg(Long id);
 
     Blog getAndConvert(long id);

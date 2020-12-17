@@ -38,13 +38,14 @@
                     </div>
                 </div>
             </div>
+            <!--隐藏按钮-->
             <div class="ui menu toggle icon black button m-top-right m-mobile-show">
                 <i class="sidebar icon"></i>
             </div>
         </nav>
 
         <!-- 底部footer -->
-        <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-big" style="opacity: .9 !important;">
             <div class="ui center aligned container">
                 <div class="ui inverted divided stackable grid">
                     <div class="three wide column">
@@ -56,25 +57,22 @@
                     </div>
                     <div class="three wide column">
                         <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
+                        <div id="newblog-container">
+                            <div class="ui inverted link list" th:fragment="newBlogList">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事（user story）</a>
+                            </div>
                         </div>
                     </div>
                     <div class="three wide column">
-                        <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
+                        <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
                         <div class="ui inverted link list">
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
-                            <a href="#" class="item">用户故事（user story）</a>
+                            <a href="#" class="item" th:text="#{index.email}">用户故事（user story）</a>
+                            <a href="#" class="item" th:text="#{index.qq}">用户故事（user story）</a>
                         </div>
                     </div>
                     <div class="seven wide column">
-                        <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
-                        <p class="m-text-thin m-text-spaced m-opacity-mini">回忆迷惘杀戮多，往事情仇待如何。绢写黑诗无限恨，夙兴夜寐枉徒劳。</p>
+                        <h4 class="ui inverted header m-text-thin m-text-spaced ">简介</h4>
+                        <p class="m-text-thin m-text-spaced m-opacity-mini" th:text="#{index.summary}">一个不断学习的小白。</p>
                     </div>
                 </div>
 
@@ -93,6 +91,10 @@
             <script src="../../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
             <script src="../../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
             <script src="../../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+            <script color="0,255,255" opacity='0.7' zIndex="-1" count="99" th:src="@{https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js}"></script>
+            <script>
+                $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+            </script>
         </th:block>
     </body>
 </html>

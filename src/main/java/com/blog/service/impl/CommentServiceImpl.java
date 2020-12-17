@@ -19,6 +19,9 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
+    //存放迭代找出的所有子代的集合
+    private List<Comment> tempReplys = new ArrayList<>();
+
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
         Sort sort = Sort.by(Sort.Direction.ASC, "createTime");
@@ -37,6 +40,18 @@ public class CommentServiceImpl implements CommentService {
         }
         comment.setCreateTime(new Date());
         return commentRepository.save(comment);
+    }
+
+    @Transactional
+    @Override
+    public void deleteComment(Long id) {
+        commentRepository.deleteByBlogId(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteByCommentId(Long id) {
+        commentRepository.deleteById(id);
     }
 
     /**
@@ -76,8 +91,7 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
-    //存放迭代找出的所有子代的集合
-    private List<Comment> tempReplys = new ArrayList<>();
+
     /**
      * 递归迭代，剥洋葱
      * @param comment 被迭代的对象

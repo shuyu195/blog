@@ -45,6 +45,11 @@ public class LoginController {
         session.removeAttribute("user");
         return "redirect:/admin";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "redirect:/admin";
+    }
 }
 
 

@@ -3,6 +3,7 @@ package com.blog.web.admin;
 import com.blog.po.Blog;
 import com.blog.po.User;
 import com.blog.service.BlogService;
+import com.blog.service.CommentService;
 import com.blog.service.TagService;
 import com.blog.service.TypeService;
 import com.blog.vo.BlogQuery;
@@ -36,6 +37,9 @@ public class BlogController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 10, sort = "updateTime", direction = Sort.Direction.DESC) Pageable pageable,
@@ -94,7 +98,9 @@ public class BlogController {
 
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {
+        commentService.deleteComment(id);
         blogService.deleteBlog(id);
+
         attributes.addFlashAttribute("message", "删除成功");
         return REDIRECT_LIST;
     }

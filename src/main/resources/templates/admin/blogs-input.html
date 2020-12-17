@@ -50,7 +50,7 @@
     </div>
 
     <!-- 中间部分 -->
-    <div id="waypoint" class="m-container m-padded-tb-big">
+    <div id="waypoint" class="m-container m-padded-tb-big m-opacity-mini">
         <div class="ui container">
             <form id="blog-form" action="#" th:object="${blog}" method="post" th:action="@{/admin/blogs}" class="ui form">
                 <input type="hidden" name="published">
@@ -139,25 +139,25 @@
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" checked name="recommend" th:checked="*{recommend}" id="recommend" class="hidden">
-                            <label for="recommend">推荐</label>
+                            <label for="recommend" class="m-white">推荐</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="shareStatement" th:checked="*{shareStatement}" id="shareStatement" class="hidden">
-                            <label for="shareStatement">转载声明</label>
+                            <label for="shareStatement" class="m-white">转载声明</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="appreciation" th:checked="*{appreciation}" id="appreciation" class="hidden">
-                            <label for="appreciation">赞赏</label>
+                            <label for="appreciation" class="m-white">赞赏</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="commentabled" th:checked="*{commentabled}" id="commentabled" class="hidden">
-                            <label for="commentabled">评论</label>
+                            <label for="commentabled" class="m-white">评论</label>
                         </div>
                     </div>
                 </div>

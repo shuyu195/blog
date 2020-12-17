@@ -9,6 +9,8 @@ spring:
     cache: false
   profiles:
     active: dev
+  messages:
+    basename: i18n/messages
 
 server:
   error:

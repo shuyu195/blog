@@ -42,7 +42,7 @@
     </nav>
 
     <!-- 中间部分 -->
-    <div id="waypoint" class="m-container m-padded-tb-big">
+    <div id="waypoint" class="m-container m-padded-tb-big" style="opacity: .8 !important;">
         <div class="ui container">
             <div class="ui stackable grid">
 
@@ -64,7 +64,7 @@
                     <div class="ui attached  segment">
 
                         <div class="ui padded vertical segment m-padded-tb-large m-padded-lr-large m-mobile-lr-clear" th:each="blog : ${page.content}">
-                          <div class="ui middle aligned mobile reversed stackable grid" >
+                          <div class="ui middle aligned mobile reversed stackable grid" th:if="${blog.published}" >
                             <div class="eleven wide column">
                                     <h3 class="ui header"><a href="#" class="m-black" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" th:text="${blog.title}">Quartz 注入 Spring Bean为空</a></h3>
                                     <p class="m-text" th:text="|${blog.description}...|">
@@ -330,20 +330,20 @@
                 <!-- 右边的top -->
                 <div class="five wide column">
                     <!-- 分类 -->
-                    <div class="ui segments">
+                    <div class="ui segments animate__fadeIn">
                         <div class="ui secondary segment">
                             <div class="ui two column grid">
                                 <div class="column">
                                     <i class="idea icon"></i>分类
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                    <a href="#" target="_blank" th:href="@{/types/-1}">more <i class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
                             <div class="ui fluid vertical menu">
-                                <a href="#" class="item" th:each="type : ${types}">
+                                <a href="#" class="item" th:href="@{/types/{id}(id=${type.id})}" target="_blank" th:each="type : ${types}">
                                     <span th:text="${type.name}">学习日志</span>
                                     <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                                 </a>
@@ -374,19 +374,19 @@
                     </div>
 
                     <!-- 标签 -->
-                    <div class="ui segments m-margin-top-large">
+                    <div class="ui segments m-margin-top-large animate__fadeIn">
                         <div class="ui secondary segment">
                             <div class="ui two column grid">
                                 <div class="column">
                                     <i class="tags icon"></i>标签
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                    <a href="#" target="_blank" th:href="@{/tags/-1}">more <i class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
-                            <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:href="@{/tags/{id}(id=${tag.id})}" th:each="tag : ${tags}">
                                 <span th:text="${tag.name}"> java </span><div class="detail" th:text="${#arrays.length(tag.blogs)}">13</div>
                             </a>
                             <!--/*-->
@@ -413,7 +413,7 @@
                     </div>
 
                     <!-- 最新推荐 -->
-                    <div class="ui segments m-margin-top-large">
+                    <div class="ui segments m-margin-top-large animate__fadeIn">
                         <div class="ui secondary segment">
                             <i class="bookmark icon"></i>最新推荐
                         </div>
@@ -519,6 +519,8 @@
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
     <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
     <!--/*/</th:block>/*/-->
+
+<!--    <script id="ribbon" size="300" alpha='0.1' zIndex="-1" src="./js/canvas-ribbon.min.js" th:src="@{/js/canvas-ribbon.min.js}"></script>-->
 
     <script>
         $('.menu.toggle').click(function () {

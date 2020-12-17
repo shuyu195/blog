@@ -50,7 +50,7 @@
     </div>
 
     <!-- 中间部分 -->
-    <div id="waypoint" class="m-container-small m-padded-tb-big">
+    <div id="waypoint" class="m-container-small m-padded-tb-big m-opacity-mini">
         <div class="ui container">
             <form action="#" method="post" th:object="${type}" th:action="*{id}==null?@{/admin/types}:@{/admin/types/{id}(id=*{id})}" class="ui form">
                 <input type="hidden" name="id" th:value="*{id}">

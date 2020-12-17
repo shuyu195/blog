@@ -28,6 +28,11 @@ public class BlogServiceImpl implements BlogService {
     private BlogRepository blogRepository;
 
     @Override
+    public Page<Blog> listBlogCommentabled(Pageable pageable) {
+        return blogRepository.findBlogCommentabled(pageable);
+    }
+
+    @Override
     public Blog getBolg(Long id) {
         return blogRepository.findById(id).get();
     }
@@ -86,7 +91,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
-        return blogRepository.findAll(pageable);
+        return blogRepository.findPublished(pageable);
     }
 
     @Override
