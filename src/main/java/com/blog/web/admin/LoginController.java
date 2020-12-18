@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/admin")
 public class LoginController {
 
+    private static final String REDIRECT_ADMIN = "redirect:/admin";
+
     @Autowired
     private UserService userService;
 
@@ -36,19 +38,19 @@ public class LoginController {
             return "admin/index";
         } else {
             attributes.addFlashAttribute("message", "用户名或密码错误！");
-            return "redirect:/admin";
+            return REDIRECT_ADMIN;
         }
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/admin";
+        return REDIRECT_ADMIN;
     }
 
     @GetMapping("/login")
     public String login() {
-        return "redirect:/admin";
+        return REDIRECT_ADMIN;
     }
 }
 

@@ -21,6 +21,9 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class TypeController {
 
+    private static final String TYPES_INPUT = "admin/types-input";
+    private static final String REDIRECT_TYPES = "redirect:/admin/types";
+
     @Autowired
     private TypeService typeService;
 
@@ -34,13 +37,13 @@ public class TypeController {
     @GetMapping("/types/input")
     public String input(Model model) {
         model.addAttribute("type", new Type());
-        return "admin/types-input";
+        return TYPES_INPUT;
     }
 
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("type", typeService.getType(id));
-        return "admin/types-input";
+        return TYPES_INPUT;
     }
 
     @PostMapping("/types")
@@ -50,7 +53,7 @@ public class TypeController {
             result.rejectValue("name","nameError", "不能重复添加分类");
         }
         if (result.hasErrors()) {
-            return "admin/types-input";
+            return TYPES_INPUT;
         }
         Type t = typeService.saveType(type);
         if(t == null) {
@@ -59,7 +62,7 @@ public class TypeController {
             attributes.addFlashAttribute("message", "新增成功");
         }
 
-        return "redirect:/admin/types";
+        return REDIRECT_TYPES;
     }
 
     @PostMapping("/types/{id}")
@@ -70,7 +73,7 @@ public class TypeController {
             result.rejectValue("name","nameError", "不能重复添加分类");
         }
         if (result.hasErrors()) {
-            return "admin/types-input";
+            return TYPES_INPUT;
         }
         Type t = typeService.updateType(id, type);
         if(t == null) {
@@ -79,13 +82,13 @@ public class TypeController {
             attributes.addFlashAttribute("message", "更新成功");
         }
 
-        return "redirect:/admin/types";
+        return REDIRECT_TYPES;
     }
 
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         typeService.deleteType(id);
         attributes.addFlashAttribute("message", "删除成功");
-        return "redirect:/admin/types";
+        return REDIRECT_TYPES;
     }
 }

@@ -64,7 +64,7 @@ public class MarkdownUtils {
                 "| 阿什顿发  | 非固定杆 | 撒阿什顿发 |\n" +
                 "\n";
         String a = "[imCoding 爱编程](http://www.lirenmi.cn)";
-        System.out.println(markdownToHtmlExtensions(a));
+        System.out.println(markdownToHtmlExtensions(table));
     }
 
     /**

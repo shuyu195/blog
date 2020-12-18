@@ -53,8 +53,7 @@
                     </div>
                     <!-- 简介 -->
                     <div class="ui attached segment">
-                        <p class="m-text">回忆迷惘杀戮多，往事情仇待如何。绢写黑诗无限恨，夙兴夜寐枉徒劳。</p>
-                        <p class="m-text">回忆迷惘杀戮多，往事情仇待如何。绢写黑诗无限恨，夙兴夜寐枉徒劳。</p>
+                        <p class="m-text">一个不断学习的小白。</p>
                     </div>
                     <!-- 标签 -->
                     <div class="ui attached segment">
@@ -73,10 +72,10 @@
                         <div class="ui red basic left pointing label m-margin-tb-tiny">Mybatis</div>
                     </div>
                     <div class="ui bottom attached segment">
-                        <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+                        <a href="https://github.com/shuyu195" target="_blank" class="ui github circular icon button" data-content="点击跳转到GitHub"><i class="github icon"></i></a>
                         <a href="#" class="ui wechat-popup circular icon button"><i class="wechat icon"></i></a>
                         <a href="#" class="ui qq circular icon button" data-content="1440286530"
-                            data-position="bottom center" ><i class="qq icon"></i></a>
+                            data-position="bottom center"><i class="qq icon"></i></a>
                         <a href="#" class="ui circular icon button"><i class="google icon"></i></a>
                     </div>
 
@@ -143,6 +142,9 @@
         });
         $('.wechat-popup').popup({
             popup : $('.wechat-qr'),
+            position : 'bottom center'
+        });
+        $('.github').popup({
             position : 'bottom center'
         });
         $('.qq').popup();
